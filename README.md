@@ -22,7 +22,7 @@ TickList is a simple TODO list desktop app written in C++ with a wxWidgets GUI. 
 1. Clone this repository:
 ```
 
-git clone https://github.com/your-user/TickList.git
+git clone https://github.com/bored-hell/TickList.git
 cd TickList
 
 ```
