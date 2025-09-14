@@ -45,6 +45,8 @@ struct Task
 class TaskList
 {
   public:
+    TaskList();
+    ~TaskList();
     const std::unordered_map<size_t, Task> &GetData() const
     {
         return data;
@@ -53,8 +55,8 @@ class TaskList
     Task *GetTaskFromId(size_t id);
     const Task *GetTaskFromId(size_t id) const;
     void RemoveTask(size_t id);
-    void SaveTasks(std::string_view filename) const;
-    void LoadTasks(std::string_view filename = "tasks.tof");
+    void SaveTasks() const;
+    void LoadTasks();
 
   private:
     std::unordered_map<size_t, Task> data;

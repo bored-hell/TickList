@@ -54,6 +54,16 @@ static std::string_view get_value(std::string_view line, std::string_view key, s
     }
 }
 
+TaskList::TaskList()
+{
+    LoadTasks();
+}
+
+TaskList::~TaskList()
+{
+    SaveTasks();
+}
+
 std::pair<const size_t, Task> &TaskList::AddTask(std::string_view task, int priority)
 {
     std::pair<std::unordered_map<size_t, Task>::iterator, bool> result;
@@ -92,10 +102,12 @@ void TaskList::RemoveTask(size_t id)
     data.erase(id);
 }
 
-void TaskList::SaveTasks(std::string_view filename) const
+void TaskList::SaveTasks() const
 {
     if (data.empty())
         return;
+
+    constexpr std::string_view filename = "tasks.tof";
 
     std::ofstream file(filename.data(), std::ios::out | std::ios::trunc);
     if (!file.is_open())
@@ -106,13 +118,14 @@ void TaskList::SaveTasks(std::string_view filename) const
 
     for (auto &task : data)
     {
-        file << std::format("task:\"{}\", done:{}, priority:{}\n", task.first, task.second.task_name, task.second.complete,
+        file << std::format("task:\"{}\", done:{}, priority:{}\n", task.second.task_name, task.second.complete,
                      task.second.priority);
     }
 }
 
-void TaskList::LoadTasks(std::string_view filename)
+void TaskList::LoadTasks()
 {
+    constexpr std::string_view filename = "tasks.tof";
     std::ifstream file(filename.data());
     if (!file.is_open())
         return;

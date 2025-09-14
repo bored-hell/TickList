@@ -114,8 +114,6 @@ void TickListFrame::CreateListCtrl()
     list_ctrl->InsertColumn(2, "COMPLETE", wxLIST_FORMAT_CENTER);
     list_ctrl->InsertColumn(3, "PRIORITY", wxLIST_FORMAT_CENTER);
 
-    tasklist.LoadTasks();
-
     size_t idx = 0;
     for (const auto &tp : tasklist.GetData())
     {

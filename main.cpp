@@ -7,7 +7,6 @@ class TickList : public wxApp
     {
         TickListFrame *frame = new TickListFrame;
         frame->Show();
-        CORE_LOG_FMT("exited: {}", "with a smile");
         return true;
     }
 };
