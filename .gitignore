@@ -1,0 +1,11 @@
+*
+*/
+
+!*.hpp
+!*.cpp
+!*.tof
+!*.lua
+
+!/
+!/README.md
+!.gitignore
