@@ -26,22 +26,16 @@ git clone https://github.com/your-user/TickList.git
 cd TickList
 
 ```
-2. Generate project files with Premake:
-```
-
-premake5 gmake
-
-```
 3. Build:
 ```
 
-make
+./build.sh
 
 ```
 4. Run the application:
 ```
 
-./bin/Debug/TickList
+./bin/TickList
 
 ```
 
@@ -49,7 +43,6 @@ make
 
 ## Usage
 
-- Run the application.  
 - Add, edit, or remove tasks in the list.  
 - Task data is saved automatically in `tasks.tof`.
 
