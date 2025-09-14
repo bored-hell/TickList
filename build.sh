@@ -11,4 +11,4 @@ fi
 
 set -xe
 
-g++ -o $BUILD_FOLDER/TaskList $SRC $CXXFLAGS $WXFLAGS
+g++ -o $BUILD_FOLDER/TickList $SRC $CXXFLAGS $WXFLAGS
