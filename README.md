@@ -35,7 +35,7 @@ cd TickList
 Additional: Debug Build
 ```
 
-./build.sh release
+./build.sh debug
 
 ```
 4. Run the application:
