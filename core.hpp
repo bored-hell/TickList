@@ -10,14 +10,7 @@
 #include <format>
 
 #ifndef _DEBUG
-
-inline std::ofstream &InitLogger()
-{
-  static std::ofstream file("errors.log", std::ios::out | std::ios::app);
-  if (!file.is_open())
-    std::abort();
-  return file;
-}
+std::ofstream &InitLogger();
 
 #define CORE_LOG(msg) \
   do {\

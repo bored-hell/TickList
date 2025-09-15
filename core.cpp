@@ -1,8 +1,10 @@
 #include "core.hpp"
 
+#include <iostream>
 #include <fstream>
 #include <random>
 #include <climits>
+#include <filesystem>
 
 static std::random_device rd;
 static std::default_random_engine dre(rd());
@@ -52,6 +54,35 @@ static std::string_view get_value(std::string_view line, std::string_view key, s
 
         return value;
     }
+}
+
+static const std::filesystem::path &GetAppPath()
+{
+  std::filesystem::path home_dir = getenv("HOME");
+  if (home_dir.empty())
+    std::abort();
+
+  static std::filesystem::path app_path = home_dir / ".TaskList";
+
+  if (!std::filesystem::exists(app_path))
+  {
+    std::error_code ec;
+    if (!std::filesystem::create_directory(app_path, ec))
+    {
+      std::cout << "std::filesystem error: " << ec.message() << '\n';
+      std::abort();
+    }
+  }
+
+  return app_path;
+}
+
+std::ofstream &InitLogger()
+{
+  static std::ofstream file(GetAppPath()/"errors.log", std::ios::out | std::ios::app);
+  if (!file.is_open())
+    std::abort();
+  return file;
 }
 
 TaskList::TaskList()
@@ -107,9 +138,9 @@ void TaskList::SaveTasks() const
     if (data.empty())
         return;
 
-    constexpr std::string_view filename = "tasks.tof";
+    const std::filesystem::path filename = GetAppPath()/"tasks.tof";
 
-    std::ofstream file(filename.data(), std::ios::out | std::ios::trunc);
+    std::ofstream file(filename, std::ios::out | std::ios::trunc);
     if (!file.is_open())
     {
         CORE_LOG("File couldn't be opened");
@@ -125,8 +156,8 @@ void TaskList::SaveTasks() const
 
 void TaskList::LoadTasks()
 {
-    constexpr std::string_view filename = "tasks.tof";
-    std::ifstream file(filename.data());
+    const std::filesystem::path filename = GetAppPath()/"tasks.tof";
+    std::ifstream file(filename);
     if (!file.is_open())
         return;
 
