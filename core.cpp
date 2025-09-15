@@ -62,14 +62,14 @@ static const std::filesystem::path &GetAppPath()
   if (home_dir.empty())
     std::abort();
 
-  static std::filesystem::path app_path = home_dir / ".TaskList";
+  static std::filesystem::path app_path = home_dir / ".TickList";
 
   if (!std::filesystem::exists(app_path))
   {
     std::error_code ec;
     if (!std::filesystem::create_directory(app_path, ec))
     {
-      std::cout << "std::filesystem error: " << ec.message() << '\n';
+      std::cerr << "std::filesystem error: " << ec.message() << '\n';
       std::abort();
     }
   }
