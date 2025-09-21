@@ -9,7 +9,7 @@
 #include <unordered_map>
 #include <format>
 
-#ifndef _DEBUG
+#ifdef _DEBUG
 std::ofstream &InitLogger();
 
 #define CORE_LOG(msg) \
