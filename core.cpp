@@ -77,6 +77,7 @@ static const std::filesystem::path &GetAppPath()
   return app_path;
 }
 
+#ifdef _DEBUG
 std::ofstream &InitLogger()
 {
   static std::ofstream file(GetAppPath()/"errors.log", std::ios::out | std::ios::app);
@@ -84,6 +85,7 @@ std::ofstream &InitLogger()
     std::abort();
   return file;
 }
+#endif
 
 TaskList::TaskList()
 {
