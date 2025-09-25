@@ -137,11 +137,7 @@ void TaskList::RemoveTask(size_t id)
 
 void TaskList::SaveTasks() const
 {
-    if (data.empty())
-        return;
-
     const std::filesystem::path filename = GetAppPath()/"tasks.tof";
-
     std::ofstream file(filename, std::ios::out | std::ios::trunc);
     if (!file.is_open())
     {
