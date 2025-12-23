@@ -24,7 +24,7 @@ jobs:
     - name: Install wxWidgets
       run: |
         sudo apt-get update
-        sudo apt-get install -y libwxgtk3.2-devel build-essential
+        sudo apt-get install -y libwxgtk3.2-dev build-essential
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
