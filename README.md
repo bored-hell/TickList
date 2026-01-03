@@ -4,48 +4,10 @@ TickList is a simple TODO list desktop app written in C++ with a wxWidgets GUI. 
 
 ---
 
-## Supported Platforms
-
-- Currently, **TickList supports Linux only**.
-
----
-
-## Installation
-
 ### Prerequisites
 
-- C++20 or newer compiler  
-- wxWidgets library (3.3) installed on Linux
-
-### Build Instructions
-
-1. Clone this repository:
-```
-
-git clone https://github.com/bored-hell/TickList.git
-cd TickList
-
-```
-3. Build:
-```
-
-./build.sh
-
-```
-Additional: Debug Build
-```
-
-./build.sh debug
-
-```
-4. Run the application:
-```
-
-./bin/TickList
-
-```
-
----
+- C++20 or newer compiler
+- wxWidgets library (3.3) installed
 
 ## Usage
 
